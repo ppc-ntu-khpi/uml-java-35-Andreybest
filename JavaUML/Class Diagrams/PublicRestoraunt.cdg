@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="PublicRestoraunt">
+  <ClassDiagramComponents>
+    <Class name="Dish" package="" visibility="public" xPosition="435.0" yPosition="117.0">
+      <Fields>
+        <Field name="price" type="float" visibility="private"/>
+        <Field name="description" type="String" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="changePrice" returnType="int" visibility="public">
+          <Argument type="int" name="price"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Order" package="" visibility="public" xPosition="810.0" yPosition="127.0">
+      <Fields>
+        <Field name="dishes" type="List&lt;Dish&gt;" visibility="private"/>
+        <Field name="orderer" type="Client" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="getOrderPrice" returnType="float" visibility="public"/>
+        <Method name="addDish" returnType="Dish" visibility="public">
+          <Argument type="Dish" name="dish"/>
+        </Method>
+        <Method name="removeDish" returnType="Dish" visibility="public">
+          <Argument type="Dish" name="dish"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Client" package="" visibility="public" xPosition="802.0" yPosition="386.0">
+      <Fields>
+        <Field name="orders" type="List&lt;Order&gt;" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="addOrder" returnType="Order" visibility="public">
+          <Argument type="Order" name="order"/>
+        </Method>
+        <Method name="cancelOrder" returnType="Order" visibility="public">
+          <Argument type="Order" name="order"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Worker" package="" visibility="public" xPosition="419.0" yPosition="386.0">
+      <Fields>
+        <Field name="name" type="String" visibility="private"/>
+        <Field name="completedOrders" type="List&lt;Order&gt;" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="executeOrder" returnType="void" visibility="public">
+          <Argument type="Order" name="order"/>
+        </Method>
+        <Method name="cancelOrder" returnType="void" visibility="public">
+          <Argument type="Order" name="order"/>
+        </Method>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <HasRelation name="completedOrders" source="Worker" target="Order" type="Default" sourceCardinality="0..1" targetCardinality="1..*" collectionType="List"/>
+    <HasRelation name="dishes" source="Order" target="Dish" type="Default" sourceCardinality="0..1" targetCardinality="1..*" collectionType="List"/>
+    <HasRelation name="orders" source="Client" target="Order" type="Default" sourceCardinality="0..1" targetCardinality="1..*" collectionType="List"/>
+  </ClassDiagramRelations>
+</ClassDiagram>
