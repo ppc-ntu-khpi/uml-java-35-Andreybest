@@ -1,4 +1,3 @@
-
 import java.util.List;
 
 public class Worker {
@@ -11,5 +10,10 @@ public class Worker {
     }
 
     public void cancelOrder(Order order) {
+    }
+
+    private int id;
+
+    public Worker(String name) {
     }
 }

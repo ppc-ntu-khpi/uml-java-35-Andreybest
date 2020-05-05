@@ -2,24 +2,42 @@
 
 <ClassDiagram name="PublicRestoraunt">
   <ClassDiagramComponents>
-    <Class name="Dish" package="" visibility="public" xPosition="435.0" yPosition="117.0">
+    <Class name="Dish" package="" visibility="public" xPosition="408.0" yPosition="115.0">
       <Fields>
         <Field name="price" type="float" visibility="private"/>
         <Field name="description" type="String" visibility="private"/>
+        <Field name="id" type="int" visibility="private"/>
+        <Field name="name" type="String" visibility="private"/>
       </Fields>
-      <Constructors/>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="name"/>
+          <Argument type="float" name="price"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="String" name="name"/>
+          <Argument type="float" name="price"/>
+          <Argument type="String" name="description"/>
+        </Constructor>
+      </Constructors>
       <Methods>
         <Method name="changePrice" returnType="int" visibility="public">
           <Argument type="int" name="price"/>
         </Method>
       </Methods>
     </Class>
-    <Class name="Order" package="" visibility="public" xPosition="810.0" yPosition="127.0">
+    <Class name="Order" package="" visibility="public" xPosition="808.0" yPosition="115.0">
       <Fields>
         <Field name="dishes" type="List&lt;Dish&gt;" visibility="private"/>
         <Field name="orderer" type="Client" visibility="private"/>
+        <Field name="id" type="int" visibility="private"/>
       </Fields>
-      <Constructors/>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="Client" name="orderer"/>
+          <Argument type="List&lt;Dish&gt;" name="dishes"/>
+        </Constructor>
+      </Constructors>
       <Methods>
         <Method name="getOrderPrice" returnType="float" visibility="public"/>
         <Method name="addDish" returnType="Dish" visibility="public">
@@ -30,11 +48,18 @@
         </Method>
       </Methods>
     </Class>
-    <Class name="Client" package="" visibility="public" xPosition="802.0" yPosition="386.0">
+    <Class name="Client" package="" visibility="public" xPosition="812.0" yPosition="386.0">
       <Fields>
         <Field name="orders" type="List&lt;Order&gt;" visibility="private"/>
+        <Field name="name" type="String" visibility="private"/>
+        <Field name="id" type="int" visibility="private"/>
       </Fields>
-      <Constructors/>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="name"/>
+          <Argument type="List&lt;Order&gt;" name="orders"/>
+        </Constructor>
+      </Constructors>
       <Methods>
         <Method name="addOrder" returnType="Order" visibility="public">
           <Argument type="Order" name="order"/>
@@ -44,12 +69,17 @@
         </Method>
       </Methods>
     </Class>
-    <Class name="Worker" package="" visibility="public" xPosition="419.0" yPosition="386.0">
+    <Class name="Worker" package="" visibility="public" xPosition="455.0" yPosition="386.0">
       <Fields>
         <Field name="name" type="String" visibility="private"/>
         <Field name="completedOrders" type="List&lt;Order&gt;" visibility="private"/>
+        <Field name="id" type="int" visibility="private"/>
       </Fields>
-      <Constructors/>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="name"/>
+        </Constructor>
+      </Constructors>
       <Methods>
         <Method name="executeOrder" returnType="void" visibility="public">
           <Argument type="Order" name="order"/>
@@ -61,8 +91,8 @@
     </Class>
   </ClassDiagramComponents>
   <ClassDiagramRelations>
-    <HasRelation name="completedOrders" source="Worker" target="Order" type="Default" sourceCardinality="0..1" targetCardinality="1..*" collectionType="List"/>
-    <HasRelation name="dishes" source="Order" target="Dish" type="Default" sourceCardinality="0..1" targetCardinality="1..*" collectionType="List"/>
     <HasRelation name="orders" source="Client" target="Order" type="Default" sourceCardinality="0..1" targetCardinality="1..*" collectionType="List"/>
+    <HasRelation name="dishes" source="Order" target="Dish" type="Default" sourceCardinality="0..1" targetCardinality="1..*" collectionType="List"/>
+    <HasRelation name="completedOrders" source="Worker" target="Order" type="Default" sourceCardinality="0..1" targetCardinality="1..*" collectionType="List"/>
   </ClassDiagramRelations>
 </ClassDiagram>

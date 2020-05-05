@@ -1,4 +1,3 @@
-
 import java.util.List;
 
 public class Order {
@@ -17,5 +16,10 @@ public class Order {
 
     public Dish removeDish(Dish dish) {
         throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    private int id;
+
+    public Order(Client orderer, List<Dish> dishes) {
     }
 }
